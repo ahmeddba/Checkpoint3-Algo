@@ -1,0 +1,21 @@
+PROCEDURE InsertionSort(VAR arr: ARRAY OF INTEGER);
+VAR
+    n, i, j, key: INTEGER;
+BEGIN
+    n := Length(arr);  // Determine the length of the array
+
+    FOR i := 1 TO n - 1 DO  // Start with the second element (index 1) and consider it as the "key"
+    BEGIN
+        key := arr[i];  // Store the current element as the "key"
+        j := i - 1;  // Initialize the index of the element to the left of the "key"
+
+        // Compare the key with the elements to its left until the correct position for the key is found
+        WHILE (j >= 0) AND (arr[j] > key) DO
+        BEGIN
+            arr[j + 1] := arr[j];  // Move elements greater than the key one position to the right
+            j := j - 1;  // Move one position to the left
+        END;
+
+        arr[j + 1] := key;  // Insert the key in its correct position within the sorted sequence
+    END;
+END;
